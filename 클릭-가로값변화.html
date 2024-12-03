@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>스크롤 배경이미지 변경</title>
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .item_wrap {
+            width: 1280px;
+            margin: 0 auto;
+            
+            display: flex;
+             
+            gap: 20px;
+            .item {
+                overflow: hidden;
+                
+                
+                width: calc(100% / 5 - 20px);
+                height: 500px;
+                background-color: #000000;
+            
+                border-radius: 20px;
+                position: relative; 
+                 
+                span {
+                    font-size: 20px;
+                    display: block;
+                
+                }
+                .in {
+                    height: 100%;
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    color: #fff;
+                    padding: 20px;
+                    
+                }
+                .in div { 
+                    opacity: 0;
+                }
+                img {
+                    /* width: 100%; */
+                    height: 100%;
+                    
+                }
+            }
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script src="lib/jquery-ui.min.js"></script>
+
+    <script>
+        $(function(){
+            let item = $('.item').outerWidth()
+            let itemWidth = 100 / 5;
+            console.log(itemWidth)
+            console.log(item)
+            
+            $('.item').on('click', function(){
+                $('.item').find('.in div').css({
+                    'opacity' : '0',
+                })
+                $(this).animate({
+                    width : '50%',
+                },700, 'easeOutBack')
+
+                $(this).find('.in div').css({
+                    'opacity' : '1',
+                    'transition-delay' : '0.7s'
+                })
+                $(this).siblings().animate({
+                    width : item
+                },700, 'easeOutBack')
+                
+
+            });
+        })
+    </script>
+</head>
+<body>
+    <!-- 노랑풍선 -->
+    <div class="item_wrap">
+        <div class="item">
+            <img src="img/bg-image-01.jpg" alt="">
+            <div class="in">
+                <span>Package</span>
+                <div>
+                    <p>전세계 맞춤 패키지여행으로
+                        연인, 친구, 가족과 함께
+                        행복한 추억을 만듭니다.</p>
+                </div>
+            </div><!-- .in end -->
+        </div><!-- .item end -->
+
+        <div class="item">
+            <img src="img/bg-image-02.jpg" alt="">
+            <div class="in">
+                <span>Honeymoon</span>
+                <div> 
+                    <p>신혼부부의 취향과 조건에 맞춘
+                        특별한 여행으로
+                        낭만적인 순간을 함께합니다.</p>
+                </div>
+            </div><!-- .in end -->
+        </div><!-- .item end -->
+
+        <div class="item">
+            <img src="img/bg-image-03.jpg" alt="">
+            <div class="in">
+                <span>Golf
+                    & Theme</span>
+                <div> 
+                    <p>골프투어, 가족여행, 크루즈여행,
+                        휴양여행, 성지순례, 문화탐방 등
+                        원하는 테마로 여행할 수 있습니다.</p>
+                </div>
+            </div><!-- .in end -->
+        </div><!-- .item end -->
+
+        <div class="item">
+            <img src="img/image-01.jpg" alt="">
+            <div class="in">
+                <span>Air Ticket</span>
+                <div> 
+                    <p>세계 주요 도시 및
+                        국내 항공 권 예약·발권과
+                        단체 그룹 예약까지 가능합니다.</p>
+                </div>
+            </div><!-- .in end -->
+        </div><!-- .item end -->
+
+        <div class="item">
+            <img src="img/image-02.jpg" alt="">
+            <div class="in">
+                <span>Hotel</span>
+                <div> 
+                    <p>세계 주요 도시 및
+                        국내 항공 권 예약·발권과
+                        단체 그룹 예약까지 가능합니다.</p>
+                </div>
+            </div><!-- .in end -->
+        </div><!-- .item end -->
+    </div><!-- .item_wrap end -->
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .loading {
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            font-size: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            background-color: #000;
+            color: #fff;
+        }
+        .loading span {
+            opacity: 0;
+        }
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.14.1/jquery-ui.min.js"
+        integrity="sha512-MSOo1aY+3pXCOCdGAYoBZ6YGI0aragoQsg1mKKBHXCYPIWxamwOE7Drh+N5CPgGI5SA9IEKJiPjdfqWFWmZtRA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+       
+        $(function(){
+            $('.loading').animate({
+                top : 0
+            }, 500, 'easeOutBack');
+
+            let index = 1
+            $('.loading span').each(function(index){
+                $(this).delay(300*(index + 1)).animate({
+                    opacity : 1,
+                    fontSize : '30px'
+                }, 300, 'easeInBack')
+            })
+
+            setTimeout(function(){
+                $('.loading').slideUp()
+            }, 5000)
+        })
+    </script>
+
+</head>
+
+<body>
+    <div class="loading">
+        <span>S</span>
+        <span>U</span>
+        <span>-</span>
+        <span>J</span>
+        <span>E</span>
+        <span>O</span>
+        <span>N</span>
+        <span>G</span>
+        <span>🌹</span>
+    </div>
+    <header class="header">헤더</header>
+    <main class="main">섹션</main>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>화면크기</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        li {
+            list-style: none;
+        }
+
+        .menu ul {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .menu ul li {
+            padding: 10px 20px;
+            border: 1px solid #333;
+        }
+
+        .menu ul li.on {
+            background-color: #000;
+            color: #fff;
+        }
+    </style>
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+            let menu = $('.menu li');
+            const screenWidth = window.innerWidth; //브라우저 크기
+
+            /*  $(window).resize(function(){
+                 //조건식 if문 이용
+                 if($(window).width() <= 1024) {
+                     //li에게 텍스트값 변경
+                     menu.click(function () {
+                         menu.removeClass('on');
+                         $(this).addClass('on');
+                     });
+ 
+                     menu.css({
+                         fontSize : '14px'
+                     })
+                 }  else {
+                     menu.mouseenter(function () {
+                         
+                         menu.removeClass('on');
+                         $(this).addClass('on');
+                     });
+                 }
+                 
+ 
+             }); */
+
+
+
+            if ($(window).width() > 1024) {
+                //alert()
+                menu.mouseenter(function () {
+
+
+                    menu.removeClass('on');
+                    $(this).addClass('on');
+                });
+            } else {
+
+                menu.click(function () {
+                    menu.removeClass('on');
+                    $(this).addClass('on');
+                });
+            }
+
+            
+            //자바스크립트 
+            /* document.addEventListener("DOMContentLoaded", function () {
+                function adjustLayout() {
+                    const container = document.querySelector(".container");
+                    const boxes = document.querySelectorAll(".box");
+                    const screenWidth = window.innerWidth;
+
+                    // 화면 크기가 600px 이하일 때 세로로 배치
+                    if (screenWidth <= 600) {
+                        container.style.flexDirection = "column";
+                        boxes.forEach(box => {
+                            box.style.width = "100%";
+                        });
+                    } else {
+                        // 화면 크기가 600px보다 클 때 가로로 배치
+                        container.style.flexDirection = "row";
+                        boxes.forEach(box => {
+                            box.style.width = "50%";
+                        });
+                    }
+                }
+
+                // 초기 레이아웃 설정
+                adjustLayout();
+
+                // 화면 크기가 변경될 때마다 레이아웃 재조정
+                window.addEventListener("resize", adjustLayout);
+            }); */
+        });//script end
+    </script>
+
+</head>
+
+<body>
+    <div class="menu">
+        <ul>
+            <li class="on">MENU-01</li>
+            <li>MENU-02</li>
+            <li>MENU-03</li>
+            <li>MENU-04</li>
+            <li>MENU-05</li>
+        </ul>
+    </div>
+</body>
+
+</html>

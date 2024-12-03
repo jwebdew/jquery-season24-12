@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        li {
+            list-style: none;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+        .section {
+            height: 80vh;
+            background: url('img/winter-01.jpg') center center / cover no-repeat;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .section .item_wrap {
+            max-width: 1280px;
+            width: calc(100% - 40px);
+            margin: 0 auto;
+            position: relative;
+            z-index: 9;
+        }
+        .section .item_wrap .item {
+            width: 300px;
+            background-color: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            border: 2px solid #000;
+            text-align: center;
+            margin: 10px 0;
+            padding: 30px 0;
+            border-radius: 20px;
+            opacity: 0.5;
+        }
+        .section .item_wrap .item.on {
+            opacity: 1;
+        }
+        .bg_wrap {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: flex;
+        }
+        .bg {
+           
+            width: 100%;
+            height: 100%;
+             
+        }
+        .bg.bg-01 {background: url('img/winter-01.jpg') center center / cover no-repeat;}
+        .bg.bg-02 {background: url('img/winter-02.jpg') center center / cover no-repeat;}
+        .bg.bg-03 {background: url('img/bg-image-03.jpg') center center / cover no-repeat;}
+    </style>
+
+    <script src="lib/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function(){
+            let bgWidth = $('.bg').width()
+            let screenWidth = $(window).width()
+             
+            $('.bg').width($(window).width())
+
+            
+            $('.bg_wrap').width($(window).width() * 3)
+                 
+            
+           $('.item').on('mouseenter touchstart', function(){
+                $('.item').removeClass('on');
+                $(this).addClass('on');
+
+                let itemIndex = $(this).index()
+                console.log(itemIndex)
+                $('.bg_wrap').animate({
+                    'margin-left' : -screenWidth * itemIndex
+                }, 500, 'linear') 
+            })
+        });
+    </script>
+</head>
+<body>
+    
+    <div class="section">
+        <div class="item_wrap">
+            <div class="item on">
+                <a href="https://company.ybtour.co.kr/">
+                    <span>여행의 새로운 가치를 알립니다</span>
+                    <h2>가치를 전달하는 여행</h2>
+                </a>
+            </div><!-- .item end -->
+            <div class="item">
+                <a href="#">
+                    <span>고객의, 고객에 의한, 고객을 위한</span>
+                    <h2>신뢰를 받는 여행</h2>
+                </a>
+            </div><!-- .item end -->
+            <div class="item">
+                <a href="#">
+                    <span>일상의 가장 반짝이는 순간을 만듭니다</span>
+                    <h2>즐거움을 선사하는 여행</h2>
+                </a>
+            </div><!-- .item end -->
+        </div><!-- .item_wrap end -->
+
+ 
+        <div class="bg_wrap">
+            <div class="bg bg-01 on"></div>
+            <div class="bg bg-02"></div>
+            <div class="bg bg-03"></div>
+        </div>
+    </div><!-- .item_wrap end -->
+</body>
+</html>
